@@ -212,4 +212,46 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  /* --------------------------------------------------------------------------
+     7. Light / Dark Theme Switch
+     -------------------------------------------------------------------------- */
+  const THEME_KEY = 'portfolio-theme';
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+
+  const applyTheme = (theme) => {
+    const isLight = theme === 'light';
+    if (isLight) {
+      root.setAttribute('data-theme', 'light');
+    } else {
+      root.removeAttribute('data-theme');
+    }
+
+    if (themeToggle) {
+      themeToggle.checked = isLight;
+      themeToggle.setAttribute('aria-checked', String(isLight));
+      themeToggle.setAttribute('aria-label', isLight ? 'Turn off light theme' : 'Turn on light theme');
+    }
+  };
+
+  const savedTheme = (() => {
+    try {
+      return localStorage.getItem(THEME_KEY);
+    } catch (e) {
+      return null;
+    }
+  })();
+
+  applyTheme(savedTheme === 'light' ? 'light' : 'dark');
+
+  if (themeToggle) {
+    themeToggle.addEventListener('change', () => {
+      const nextTheme = themeToggle.checked ? 'light' : 'dark';
+      try {
+        localStorage.setItem(THEME_KEY, nextTheme);
+      } catch (e) { }
+      applyTheme(nextTheme);
+    });
+  }
 });
