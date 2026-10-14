@@ -10,19 +10,22 @@
 
   <title>About Me — Goutham Raj | Front-End Developer</title>
 
-  <!-- Typography: Plus Jakarta Sans & Playfair Display Italic via Google Fonts -->
+  <!-- Typography: Plus Jakarta Sans & Playfair Display via Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@1,400;1,500;1,600;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
     rel="stylesheet">
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3.6">
   <script>
     (function () {
       try {
-        if (localStorage.getItem('portfolio-theme') === 'light') {
+        var t = localStorage.getItem('portfolio-theme');
+        if (t === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
           document.documentElement.setAttribute('data-theme', 'light');
         }
       } catch (e) { }
@@ -31,6 +34,42 @@
 </head>
 
 <body class="page-about">
+
+  <!-- ==========================================================================
+       SITE PRELOADER
+       ========================================================================== -->
+  <aside class="site-preloader" id="sitePreloader" role="status" aria-label="Loading portfolio" aria-live="polite">
+    <div class="preloader-content">
+      <div class="preloader-brand">
+        <span class="preloader-name" aria-label="goutham">
+          <span class="preloader-letter" style="--i:1">g</span>
+          <span class="preloader-letter" style="--i:2">o</span>
+          <span class="preloader-letter" style="--i:3">u</span>
+          <span class="preloader-letter" style="--i:4">t</span>
+          <span class="preloader-letter" style="--i:5">h</span>
+          <span class="preloader-letter" style="--i:6">a</span>
+          <span class="preloader-letter" style="--i:7">m</span>
+        </span>
+        <span class="preloader-dot" aria-hidden="true">.</span>
+      </div>
+
+      <div class="preloader-loader-box" aria-hidden="true">
+        <div class="preloader-spinner-wrapper">
+          <svg class="preloader-icon-svg" viewBox="0 0 44 44" width="44" height="44">
+            <circle class="preloader-track" cx="22" cy="22" r="18" fill="none" stroke-width="3.5" />
+            <circle class="preloader-arc" cx="22" cy="22" r="18" fill="none" stroke-width="3.5" stroke-linecap="round" />
+          </svg>
+          <div class="preloader-center-dot"></div>
+        </div>
+
+        <div class="preloader-progress-track">
+          <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
+        </div>
+
+        <span class="preloader-subtext">Loading</span>
+      </div>
+    </div>
+  </aside>
 
   <!-- ==========================================================================
        NAVIGATION BAR
@@ -141,72 +180,36 @@
         </a>
       </div>
 
-      <!-- About Editorial Card -->
-      <article class="about-card">
+      <!-- Section Content: Editorial Style (Ahmad Alkhaldi Reference) -->
+      <div class="editorial-about-grid">
 
-        <!-- Eyebrow label -->
-        <div class="about-eyebrow-container">
-          <span class="about-eyebrow">ABOUT ME</span>
-          <span class="eyebrow-line" aria-hidden="true"></span>
-        </div>
-
-        <!-- Heading in <h1> -->
-        <h1 class="about-title">About me</h1>
-
-        <!-- Content in <h5> -->
-        <h5 class="about-lead">
-          Hi, I'm Goutham Raj, a 24-year-old Front-End Web Developer from Calicut, Kerala, passionate about creating
-          modern, responsive, and visually appealing websites.
-        </h5>
-
-        <!-- One line gap -->
-        <div class="about-gap" aria-hidden="true"></div>
-
-        <!-- Content in <h6> -->
-        <h6 class="about-body-text">
-          I believe great websites are more than just attractive designs—they should be responsive, functional, and
-          meaningful. I'm always eager to learn new technologies, explore innovative ideas, and improve my development
-          skills.
-        </h6>
-
-        <!-- One more line gap -->
-        <div class="about-gap" aria-hidden="true"></div>
-
-        <!-- Content in <h6> -->
-        <h6 class="about-body-text">
-          My goal is to transform ideas into impactful digital experiences by combining creativity, technology, and
-          user-focused design.
-        </h6>
-
-        <!-- Highlights / Quick Facts Row -->
-        <div class="about-facts-grid">
-          <div class="about-fact-card">
-            <span class="fact-label">Location</span>
-            <span class="fact-value">Calicut, Kerala</span>
+        <!-- Left Column: Heading with Vertical Line & Complete 2026 Portfolio Image -->
+        <div class="editorial-title-col">
+          <div class="editorial-title-wrapper">
+            <span class="editorial-vertical-bar" aria-hidden="true"></span>
+            <h1 class="editorial-heading">about me.</h1>
           </div>
-          <div class="about-fact-card">
-            <span class="fact-label">Age</span>
-            <span class="fact-value">24 Years</span>
-          </div>
-          <div class="about-fact-card">
-            <span class="fact-label">Specialization</span>
-            <span class="fact-value">Front-End Web Development</span>
+          <div class="editorial-image-card">
+            <img
+              src="assets/images/portfolio-poster.jpg"
+              alt="2026 Goutham Raj Portfolio - Front-End Developer"
+              class="editorial-image"
+              loading="lazy"
+            />
           </div>
         </div>
 
-        <!-- Interactive Buttons -->
-        <div class="about-actions-group">
-          <a href="index.html" class="btn-primary-portfolio">
-            <span>EXPLORE MY WORK</span>
-            <span class="btn-arrow" aria-hidden="true">↗</span>
-          </a>
-          <a href="https://wa.me/919567326446" target="_blank" rel="noopener noreferrer"
-            class="btn-secondary-portfolio">
-            <span>CHAT ON WHATSAPP</span>
-          </a>
+        <!-- Right Column: Requested Paragraphs -->
+        <div class="editorial-content-block">
+          <p class="editorial-text">
+            My goal is to transform ideas into impactful digital experiences by combining creativity, technology, and user-focused design that leave lasting impressions.
+          </p>
+          <p class="editorial-text">
+            I believe great websites are more than just attractive designs—they should be responsive, functional, and meaningful. I'm always eager to learn new technologies, explore innovative ideas, and improve my development skills.
+          </p>
         </div>
 
-      </article>
+      </div>
 
     </div>
   </main>
@@ -264,7 +267,7 @@
   </footer>
 
   <!-- Custom JavaScript -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=2.0"></script>
 </body>
 
 </html>

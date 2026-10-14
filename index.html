@@ -9,20 +9,26 @@
   <meta name="author" content="Goutham Raj">
 
   <title>Goutham Raj — Independent Front-End Developer</title>
+  <meta property="og:title" content="Goutham Raj — Independent Front-End Developer">
+  <meta property="og:description"
+    content="Goutham Raj — Independent Front-End Web Developer based in Calicut, Kerala. Modern, responsive websites combining clean code, thoughtful design, and meaningful user experiences.">
 
-  <!-- Typography: Plus Jakarta Sans & Playfair Display Italic via Google Fonts -->
+  <!-- Typography: Plus Jakarta Sans & Playfair Display via Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@1,400;1,500;1,600;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
     rel="stylesheet">
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3.6">
   <script>
     (function () {
       try {
-        if (localStorage.getItem('portfolio-theme') === 'light') {
+        var t = localStorage.getItem('portfolio-theme');
+        if (t === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
           document.documentElement.setAttribute('data-theme', 'light');
         }
       } catch (e) { }
@@ -31,6 +37,42 @@
 </head>
 
 <body>
+
+  <!-- ==========================================================================
+       SITE PRELOADER
+       ========================================================================== -->
+  <aside class="site-preloader" id="sitePreloader" role="status" aria-label="Loading portfolio" aria-live="polite">
+    <div class="preloader-content">
+      <div class="preloader-brand">
+        <span class="preloader-name" aria-label="goutham">
+          <span class="preloader-letter" style="--i:1">g</span>
+          <span class="preloader-letter" style="--i:2">o</span>
+          <span class="preloader-letter" style="--i:3">u</span>
+          <span class="preloader-letter" style="--i:4">t</span>
+          <span class="preloader-letter" style="--i:5">h</span>
+          <span class="preloader-letter" style="--i:6">a</span>
+          <span class="preloader-letter" style="--i:7">m</span>
+        </span>
+        <span class="preloader-dot" aria-hidden="true">.</span>
+      </div>
+
+      <div class="preloader-loader-box" aria-hidden="true">
+        <div class="preloader-spinner-wrapper">
+          <svg class="preloader-icon-svg" viewBox="0 0 44 44" width="44" height="44">
+            <circle class="preloader-track" cx="22" cy="22" r="18" fill="none" stroke-width="3.5" />
+            <circle class="preloader-arc" cx="22" cy="22" r="18" fill="none" stroke-width="3.5" stroke-linecap="round" />
+          </svg>
+          <div class="preloader-center-dot"></div>
+        </div>
+
+        <div class="preloader-progress-track">
+          <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
+        </div>
+
+        <span class="preloader-subtext">Loading</span>
+      </div>
+    </div>
+  </aside>
 
   <!-- ==========================================================================
        NAVIGATION BAR
@@ -126,25 +168,22 @@
   <!-- ==========================================================================
        SECTION 1: HERO
        ========================================================================== -->
+  <!-- ==========================================================================
+       SECTION 1: HERO
+       ========================================================================== -->
   <main class="hero-section" id="home">
     <div class="hero-container">
       <div class="hero-grid">
 
-        <!-- LEFT COLUMN: Typography & Content -->
+        <!-- Typography & Content -->
         <div class="hero-content">
-
-          <!-- Eyebrow with horizontal line following text -->
-          <div class="hero-eyebrow-container">
-            <span class="hero-eyebrow">INDEPENDENT FRONT-END DEVELOPER</span>
-            <span class="eyebrow-line" aria-hidden="true"></span>
-          </div>
 
           <!-- Main Heading -->
           <div class="hero-heading-group">
             <h1 class="hero-title">
-              <span class="hero-title-main">I Design</span>
-              <span class="hero-title-main">I Develop.</span>
-              <span class="hero-title-main">I Bring Ideas to Life.</span>
+              <span class="hero-title-line">I Design.</span>
+              <span class="hero-title-line highlight-gold">I Develop.</span>
+              <span class="hero-title-line">I Bring Ideas to Life.</span>
             </h1>
           </div>
 
@@ -154,12 +193,7 @@
             combine clean code, thoughtful design, and meaningful user experiences.
           </p>
 
-          <!-- Descriptor Line -->
-          <div class="hero-descriptor">
-            FRONT-END DEVELOPMENT &nbsp;·&nbsp; CREATIVE DESIGN &nbsp;·&nbsp; DIGITAL EXPERIENCES
-          </div>
-
-          <!-- Action Buttons -->
+          <!-- Action Button: Explore My Work -->
           <div class="hero-cta-group">
             <a href="#experience" class="btn-primary-portfolio" id="btnExploreWork" aria-label="Explore my work">
               <span>EXPLORE MY WORK</span>
@@ -169,81 +203,44 @@
 
         </div>
 
-        <!-- RIGHT COLUMN: Portrait -->
-        <div class="hero-portrait-wrapper">
-          <div class="portrait-composition">
-            <div class="portrait-card">
-              <div class="portrait-image-wrapper">
-                <img src="assets/images/goutham-raj-transparent.png" alt="Goutham Raj — Front-End Web Developer"
-                  class="portrait-image" width="800" height="1067" loading="eager" fetchpriority="high">
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
-
   </main>
 
   <!-- ==========================================================================
-       SECTION 2: ABOUT ME
+       SECTION 2: ABOUT ME (Second Page - Editorial Style with 2026 Portfolio Image)
        ========================================================================== -->
   <section class="about-section" id="about">
     <div class="about-container">
-      <article class="about-card">
+      <div class="editorial-about-grid">
 
-        <!-- Eyebrow label -->
-        <div class="about-eyebrow-container">
-          <span class="about-eyebrow">ABOUT ME</span>
-          <span class="eyebrow-line" aria-hidden="true"></span>
-        </div>
-
-        <!-- Heading in <h1> -->
-        <h1 class="about-title">About me</h1>
-
-        <!-- Content in <h5> -->
-        <h5 class="about-lead">
-          Hi, I'm Goutham Raj, a 24-year-old Front-End Web Developer from Calicut, Kerala, passionate about creating
-          modern, responsive, and visually appealing websites.
-        </h5>
-
-        <!-- One line gap -->
-        <div class="about-gap" aria-hidden="true"></div>
-
-        <!-- Content in <h6> -->
-        <h6 class="about-body-text">
-          I believe great websites are more than just attractive designs—they should be responsive, functional, and
-          meaningful. I'm always eager to learn new technologies, explore innovative ideas, and improve my development
-          skills.
-        </h6>
-
-        <!-- One more line gap -->
-        <div class="about-gap" aria-hidden="true"></div>
-
-        <!-- Content in <h6> -->
-        <h6 class="about-body-text">
-          My goal is to transform ideas into impactful digital experiences by combining creativity, technology, and
-          user-focused design.
-        </h6>
-
-        <!-- Highlights / Quick Facts Row -->
-        <div class="about-facts-grid">
-          <div class="about-fact-card">
-            <span class="fact-label">Location</span>
-            <span class="fact-value">Calicut, Kerala</span>
+        <!-- Left Column: Heading with Vertical Line & Complete 2026 Portfolio Image -->
+        <div class="editorial-title-col">
+          <div class="editorial-title-wrapper">
+            <span class="editorial-vertical-bar" aria-hidden="true"></span>
+            <h2 class="editorial-heading">about me.</h2>
           </div>
-          <div class="about-fact-card">
-            <span class="fact-label">Age</span>
-            <span class="fact-value">24 Years</span>
-          </div>
-          <div class="about-fact-card">
-            <span class="fact-label">Specialization</span>
-            <span class="fact-value">Front-End Web Development</span>
+          <div class="editorial-image-card">
+            <img
+              src="assets/images/portfolio-poster.jpg"
+              alt="2026 Goutham Raj Portfolio - Front-End Developer"
+              class="editorial-image"
+              loading="lazy"
+            />
           </div>
         </div>
 
-      </article>
+        <!-- Right Column: Requested Paragraphs -->
+        <div class="editorial-content-block">
+          <p class="editorial-text">
+            My goal is to transform ideas into impactful digital experiences by combining creativity, technology, and user-focused design that leave lasting impressions.
+          </p>
+          <p class="editorial-text">
+            I believe great websites are more than just attractive designs—they should be responsive, functional, and meaningful. I'm always eager to learn new technologies, explore innovative ideas, and improve my development skills.
+          </p>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -253,47 +250,33 @@
   <section class="experience-section" id="experience">
     <div class="experience-container">
 
-      <!-- Eyebrow label & Heading centered in <h1> -->
-      <div class="experience-header-group">
-        <div class="experience-eyebrow-container">
-          <span class="experience-eyebrow">CAREER BACKGROUND</span>
-        </div>
-        <h1 class="experience-title">My Professional Experience</h1>
+      <!-- Section Header -->
+      <div class="section-display-header">
+        <h1 class="section-display-title">My Professional Experience<span class="title-blue-dot" aria-hidden="true"></span></h1>
+        <p class="section-display-subtitle">
+          Hands-on background in customer experience, brand standards, and presentation that informs my human-centric development philosophy.
+        </p>
       </div>
 
-      <!-- Experience Cards List -->
-      <div class="experience-list">
+      <!-- Experience Cards Grid (2 columns in requested format) -->
+      <div class="service-cards-grid two-cols">
 
-        <!-- Experience 1: Adidas exclusive store (Fashion Consultant) -->
-        <article class="experience-card">
-          <div class="experience-card-header">
-            <div class="experience-badge-dot" aria-hidden="true"></div>
-            <h5 class="experience-role">Adidas exclusive store (Fashion Consultant)</h5>
-          </div>
-          <p class="experience-description">
-            Gained practical experience in fashion retail, customer service, and product presentation. Developed strong
-            communication skills while helping customers understand product options and find suitable products. Learned
-            the importance of teamwork, customer satisfaction, and brand presentation.
+        <!-- Experience Card 1: Adidas (Social UI: Warm Sunny Yellow) -->
+        <article class="service-card-item theme-yellow">
+          <h2 class="service-card-title">Adidas Exclusive Store</h2>
+          <p class="service-card-desc">
+            Gained practical experience in fashion retail, customer service, and product presentation. Developed strong communication skills while helping customers understand product options and find suitable products. Learned the importance of teamwork, customer satisfaction, and brand presentation.
           </p>
         </article>
 
-        <!-- Experience 2: Blackberrys (Fashion Consultant) -->
-        <article class="experience-card">
-          <div class="experience-card-header">
-            <div class="experience-badge-dot" aria-hidden="true"></div>
-            <h5 class="experience-role">Blackberrys (Fashion Consultant)</h5>
-          </div>
-          <p class="experience-description">
-            My experience as a Fashion Consultant at Blackberrys helped me develop my knowledge of fashion retail, men's
-            clothing, and customer engagement. I assisted customers in exploring clothing options, understanding styles,
-            and selecting products that matched their preferences. This experience enhanced my interpersonal skills,
-            attention to detail, and understanding of how presentation and customer experience contribute to a brand's
-            identity.
+        <!-- Experience Card 2: Blackberrys (Social UI: Soft Lilac / Lavender) -->
+        <article class="service-card-item theme-violet">
+          <h2 class="service-card-title">Blackberrys</h2>
+          <p class="service-card-desc">
+            My experience as a Fashion Consultant at Blackberrys helped me develop my knowledge of fashion retail, men's clothing, and customer engagement. I assisted customers in exploring clothing options, understanding styles, and selecting products that matched their preferences. This experience enhanced my interpersonal skills, attention to detail, and understanding of how presentation and customer experience contribute to a brand's identity.
           </p>
         </article>
-
       </div>
-
     </div>
   </section>
 
@@ -303,40 +286,42 @@
   <section class="education-section" id="education">
     <div class="education-container">
 
-      <div class="education-header-group">
-        <h1 class="education-title">Education</h1>
+      <!-- Section Header -->
+      <div class="section-display-header">
+        <h1 class="section-display-title">Education<span class="title-blue-dot" aria-hidden="true"></span></h1>
+        <p class="section-display-subtitle">
+          Foundational analytical and communication disciplines that ground my front-end development work in human psychology.
+        </p>
       </div>
 
-      <div class="education-list">
+      <!-- Education Cards Grid (3 columns in requested format) -->
+      <div class="service-cards-grid">
 
-        <article class="education-card">
-          <h5 class="education-role">🎓 Undergraduate Degree — BA in English Literature</h5>
-          <p class="education-meta">Specialization: Psychology</p>
-          <p class="education-description">
-            Developed strong communication, analytical thinking, research, and creative problem-solving skills through
-            my studies in English Literature and Psychology. These skills help me understand user needs, organize ideas
-            effectively, and create meaningful digital experiences.
+        <!-- Education Card 1: BA in English Literature (Social UI: Soft Sky / Periwinkle) -->
+        <article class="service-card-item theme-blue">
+          <h2 class="service-card-title">BA in English Literature</h2>
+          <p class="service-card-desc">
+            Developed strong communication, analytical thinking, research, and creative problem-solving skills through my studies in English Literature and Psychology. These skills help me understand user needs, organize ideas effectively, and create meaningful digital experiences.
           </p>
         </article>
 
-        <article class="education-card">
-          <h5 class="education-role">📘 Higher Secondary Education — 12th</h5>
-          <p class="education-description">
-            Completed higher secondary education, building a foundation in communication, critical thinking, and
-            general academic knowledge.
+        <!-- Education Card 2: Higher Secondary (Social UI: Warm Sunny Yellow) -->
+        <article class="service-card-item theme-yellow">
+          <h2 class="service-card-title">Higher Secondary — 12th</h2>
+          <p class="service-card-desc">
+            Completed higher secondary education, building a foundation in communication, critical thinking, and general academic knowledge that established strong analytical reasoning.
           </p>
         </article>
 
-        <article class="education-card">
-          <h5 class="education-role">📗 SSLC</h5>
-          <p class="education-description">
-            Completed Secondary School Leaving Certificate (SSLC), establishing a strong foundation for further
-            education and personal development.
+        <!-- Education Card 3: SSLC (Social UI: Fresh Mint / Aqua) -->
+        <article class="service-card-item theme-teal">
+          <h2 class="service-card-title">SSLC (10th Standard)</h2>
+          <p class="service-card-desc">
+            Completed Secondary School Leaving Certificate (SSLC), establishing a strong foundation for further education, personal development, and logical problem solving.
           </p>
         </article>
 
       </div>
-
     </div>
   </section>
 
@@ -393,7 +378,7 @@
   </footer>
 
   <!-- Custom JavaScript -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=2.0"></script>
 </body>
 
 </html>

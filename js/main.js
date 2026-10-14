@@ -3,6 +3,67 @@
  * Main JavaScript Controller
  */
 
+/* --------------------------------------------------------------------------
+   0. Preloader Section Controller
+   -------------------------------------------------------------------------- */
+(function initPreloader() {
+  const setup = () => {
+    const preloader = document.getElementById('sitePreloader');
+    if (!preloader) return;
+
+    document.body.classList.add('preloader-active');
+    const progressBar = document.getElementById('preloaderProgressBar');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let progress = 20;
+    const progressInterval = setInterval(() => {
+      if (progress < 88) {
+        progress += Math.floor(Math.random() * 10) + 5;
+        if (progress > 88) progress = 88;
+        if (progressBar) progressBar.style.width = progress + '%';
+      }
+    }, 110);
+
+    const dismiss = () => {
+      clearInterval(progressInterval);
+      if (progressBar) progressBar.style.width = '100%';
+
+      const delay = prefersReducedMotion ? 50 : 300;
+      setTimeout(() => {
+        preloader.classList.add('is-loaded');
+        preloader.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('preloader-active');
+
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 550);
+      }, delay);
+    };
+
+    const startTime = performance.now();
+    const minDisplayTime = prefersReducedMotion ? 80 : 750;
+
+    const onLoaded = () => {
+      const elapsed = performance.now() - startTime;
+      const remaining = Math.max(0, minDisplayTime - elapsed);
+      setTimeout(dismiss, remaining);
+    };
+
+    if (document.readyState === 'complete') {
+      onLoaded();
+    } else {
+      window.addEventListener('load', onLoaded, { once: true });
+      setTimeout(dismiss, 2800);
+    }
+  };
+
+  if (document.body) {
+    setup();
+  } else {
+    document.addEventListener('DOMContentLoaded', setup, { once: true });
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // Check user preference for reduced motion
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -225,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isLight) {
       root.setAttribute('data-theme', 'light');
     } else {
-      root.removeAttribute('data-theme');
+      root.setAttribute('data-theme', 'dark');
     }
 
     if (themeToggle) {
@@ -243,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })();
 
-  applyTheme(savedTheme === 'light' ? 'light' : 'dark');
+  applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
 
   if (themeToggle) {
     themeToggle.addEventListener('change', () => {

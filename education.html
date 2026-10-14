@@ -10,19 +10,22 @@
 
   <title>Education — Goutham Raj | Front-End Developer</title>
 
-  <!-- Typography: Plus Jakarta Sans & Playfair Display Italic via Google Fonts -->
+  <!-- Typography: Plus Jakarta Sans & Playfair Display via Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@1,400;1,500;1,600;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
     rel="stylesheet">
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3.6">
   <script>
     (function () {
       try {
-        if (localStorage.getItem('portfolio-theme') === 'light') {
+        var t = localStorage.getItem('portfolio-theme');
+        if (t === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
           document.documentElement.setAttribute('data-theme', 'light');
         }
       } catch (e) { }
@@ -31,6 +34,42 @@
 </head>
 
 <body class="page-education">
+
+  <!-- ==========================================================================
+       SITE PRELOADER
+       ========================================================================== -->
+  <aside class="site-preloader" id="sitePreloader" role="status" aria-label="Loading portfolio" aria-live="polite">
+    <div class="preloader-content">
+      <div class="preloader-brand">
+        <span class="preloader-name" aria-label="goutham">
+          <span class="preloader-letter" style="--i:1">g</span>
+          <span class="preloader-letter" style="--i:2">o</span>
+          <span class="preloader-letter" style="--i:3">u</span>
+          <span class="preloader-letter" style="--i:4">t</span>
+          <span class="preloader-letter" style="--i:5">h</span>
+          <span class="preloader-letter" style="--i:6">a</span>
+          <span class="preloader-letter" style="--i:7">m</span>
+        </span>
+        <span class="preloader-dot" aria-hidden="true">.</span>
+      </div>
+
+      <div class="preloader-loader-box" aria-hidden="true">
+        <div class="preloader-spinner-wrapper">
+          <svg class="preloader-icon-svg" viewBox="0 0 44 44" width="44" height="44">
+            <circle class="preloader-track" cx="22" cy="22" r="18" fill="none" stroke-width="3.5" />
+            <circle class="preloader-arc" cx="22" cy="22" r="18" fill="none" stroke-width="3.5" stroke-linecap="round" />
+          </svg>
+          <div class="preloader-center-dot"></div>
+        </div>
+
+        <div class="preloader-progress-track">
+          <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
+        </div>
+
+        <span class="preloader-subtext">Loading</span>
+      </div>
+    </div>
+  </aside>
 
   <!-- ==========================================================================
        NAVIGATION BAR
@@ -141,35 +180,38 @@
         </a>
       </div>
 
-      <div class="education-header-group">
-        <h1 class="education-title">Education</h1>
+      <!-- Section Header -->
+      <div class="section-display-header">
+        <h1 class="section-display-title">Education<span class="title-blue-dot" aria-hidden="true"></span></h1>
+        <p class="section-display-subtitle">
+          Foundational analytical and communication disciplines that ground my front-end development work in human psychology.
+        </p>
       </div>
 
-      <div class="education-list">
+      <!-- Education Cards Grid (3 columns in requested format) -->
+      <div class="service-cards-grid">
 
-        <article class="education-card">
-          <h5 class="education-role">🎓 Undergraduate Degree — BA in English Literature</h5>
-          <p class="education-meta">Specialization: Psychology</p>
-          <p class="education-description">
-            Developed strong communication, analytical thinking, research, and creative problem-solving skills through
-            my studies in English Literature and Psychology. These skills help me understand user needs, organize ideas
-            effectively, and create meaningful digital experiences.
+        <!-- Education Card 1: BA in English Literature (Social UI: Soft Sky / Periwinkle) -->
+        <article class="service-card-item theme-blue">
+          <h2 class="service-card-title">BA in English Literature</h2>
+          <p class="service-card-desc">
+            Developed strong communication, analytical thinking, research, and creative problem-solving skills through my studies in English Literature and Psychology. These skills help me understand user needs, organize ideas effectively, and create meaningful digital experiences.
           </p>
         </article>
 
-        <article class="education-card">
-          <h5 class="education-role">📘 Higher Secondary Education — 12th</h5>
-          <p class="education-description">
-            Completed higher secondary education, building a foundation in communication, critical thinking, and
-            general academic knowledge.
+        <!-- Education Card 2: Higher Secondary (Social UI: Warm Sunny Yellow) -->
+        <article class="service-card-item theme-yellow">
+          <h2 class="service-card-title">Higher Secondary — 12th</h2>
+          <p class="service-card-desc">
+            Completed higher secondary education, building a foundation in communication, critical thinking, and general academic knowledge that established strong analytical reasoning.
           </p>
         </article>
 
-        <article class="education-card">
-          <h5 class="education-role">📗 SSLC</h5>
-          <p class="education-description">
-            Completed Secondary School Leaving Certificate (SSLC), establishing a strong foundation for further
-            education and personal development.
+        <!-- Education Card 3: SSLC (Social UI: Fresh Mint / Aqua) -->
+        <article class="service-card-item theme-teal">
+          <h2 class="service-card-title">SSLC (10th Standard)</h2>
+          <p class="service-card-desc">
+            Completed Secondary School Leaving Certificate (SSLC), establishing a strong foundation for further education, personal development, and logical problem solving.
           </p>
         </article>
 
@@ -231,7 +273,7 @@
   </footer>
 
   <!-- Custom JavaScript -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=2.0"></script>
 </body>
 
 </html>

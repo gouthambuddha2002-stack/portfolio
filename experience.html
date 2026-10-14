@@ -10,19 +10,22 @@
 
   <title>Professional Experience — Goutham Raj | Front-End Developer</title>
 
-  <!-- Typography: Plus Jakarta Sans & Playfair Display Italic via Google Fonts -->
+  <!-- Typography: Plus Jakarta Sans & Playfair Display via Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@1,400;1,500;1,600;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
     rel="stylesheet">
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3.6">
   <script>
     (function () {
       try {
-        if (localStorage.getItem('portfolio-theme') === 'light') {
+        var t = localStorage.getItem('portfolio-theme');
+        if (t === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
           document.documentElement.setAttribute('data-theme', 'light');
         }
       } catch (e) { }
@@ -31,6 +34,42 @@
 </head>
 
 <body class="page-experience">
+
+  <!-- ==========================================================================
+       SITE PRELOADER
+       ========================================================================== -->
+  <aside class="site-preloader" id="sitePreloader" role="status" aria-label="Loading portfolio" aria-live="polite">
+    <div class="preloader-content">
+      <div class="preloader-brand">
+        <span class="preloader-name" aria-label="goutham">
+          <span class="preloader-letter" style="--i:1">g</span>
+          <span class="preloader-letter" style="--i:2">o</span>
+          <span class="preloader-letter" style="--i:3">u</span>
+          <span class="preloader-letter" style="--i:4">t</span>
+          <span class="preloader-letter" style="--i:5">h</span>
+          <span class="preloader-letter" style="--i:6">a</span>
+          <span class="preloader-letter" style="--i:7">m</span>
+        </span>
+        <span class="preloader-dot" aria-hidden="true">.</span>
+      </div>
+
+      <div class="preloader-loader-box" aria-hidden="true">
+        <div class="preloader-spinner-wrapper">
+          <svg class="preloader-icon-svg" viewBox="0 0 44 44" width="44" height="44">
+            <circle class="preloader-track" cx="22" cy="22" r="18" fill="none" stroke-width="3.5" />
+            <circle class="preloader-arc" cx="22" cy="22" r="18" fill="none" stroke-width="3.5" stroke-linecap="round" />
+          </svg>
+          <div class="preloader-center-dot"></div>
+        </div>
+
+        <div class="preloader-progress-track">
+          <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
+        </div>
+
+        <span class="preloader-subtext">Loading</span>
+      </div>
+    </div>
+  </aside>
 
   <!-- ==========================================================================
        NAVIGATION BAR
@@ -141,42 +180,30 @@
         </a>
       </div>
 
-      <!-- Header Group: Centered Heading in <h1> -->
-      <div class="experience-header-group">
-        <div class="experience-eyebrow-container">
-          <span class="experience-eyebrow">CAREER BACKGROUND</span>
-        </div>
-        <h1 class="experience-title">My Professional Experience</h1>
+      <!-- Section Header -->
+      <div class="section-display-header">
+        <h1 class="section-display-title">My Professional Experience<span class="title-blue-dot" aria-hidden="true"></span></h1>
+        <p class="section-display-subtitle">
+          Hands-on background in customer experience, brand standards, and presentation that informs my human-centric development philosophy.
+        </p>
       </div>
 
-      <!-- Experience Cards List -->
-      <div class="experience-list">
+      <!-- Experience Cards Grid (2 columns in requested format) -->
+      <div class="service-cards-grid two-cols">
 
-        <!-- Experience 1: Adidas exclusive store (Fashion Consultant) -->
-        <article class="experience-card">
-          <div class="experience-card-header">
-            <div class="experience-badge-dot" aria-hidden="true"></div>
-            <h5 class="experience-role">Adidas exclusive store (Fashion Consultant)</h5>
-          </div>
-          <p class="experience-description">
-            Gained practical experience in fashion retail, customer service, and product presentation. Developed strong
-            communication skills while helping customers understand product options and find suitable products. Learned
-            the importance of teamwork, customer satisfaction, and brand presentation.
+        <!-- Experience Card 1: Adidas (Social UI: Warm Sunny Yellow) -->
+        <article class="service-card-item theme-yellow">
+          <h2 class="service-card-title">Adidas Exclusive Store</h2>
+          <p class="service-card-desc">
+            Gained practical experience in fashion retail, customer service, and product presentation. Developed strong communication skills while helping customers understand product options and find suitable products. Learned the importance of teamwork, customer satisfaction, and brand presentation.
           </p>
         </article>
 
-        <!-- Experience 2: Blackberrys (Fashion Consultant) -->
-        <article class="experience-card">
-          <div class="experience-card-header">
-            <div class="experience-badge-dot" aria-hidden="true"></div>
-            <h5 class="experience-role">Blackberrys (Fashion Consultant)</h5>
-          </div>
-          <p class="experience-description">
-            My experience as a Fashion Consultant at Blackberrys helped me develop my knowledge of fashion retail, men's
-            clothing, and customer engagement. I assisted customers in exploring clothing options, understanding styles,
-            and selecting products that matched their preferences. This experience enhanced my interpersonal skills,
-            attention to detail, and understanding of how presentation and customer experience contribute to a brand's
-            identity.
+        <!-- Experience Card 2: Blackberrys (Theme Violet) -->
+        <article class="service-card-item theme-violet">
+          <h2 class="service-card-title">Blackberrys</h2>
+          <p class="service-card-desc">
+            My experience as a Fashion Consultant at Blackberrys helped me develop my knowledge of fashion retail, men's clothing, and customer engagement. I assisted customers in exploring clothing options, understanding styles, and selecting products that matched their preferences. This experience enhanced my interpersonal skills, attention to detail, and understanding of how presentation and customer experience contribute to a brand's identity.
           </p>
         </article>
 
@@ -238,7 +265,7 @@
   </footer>
 
   <!-- Custom JavaScript -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=2.0"></script>
 </body>
 
 </html>
